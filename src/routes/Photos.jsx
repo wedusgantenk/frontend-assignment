@@ -11,7 +11,7 @@ const Photos = () => {
   const [error, setError] = useState(null);
 
   const deletePhoto = (id) => {
-    fetch(`http://localhost:3001/photos/${id}`,{
+    fetch(`https://gallery-app-server.vercel.app/photos/${id}`,{
       method:"DELETE"
     }
     )
@@ -28,7 +28,7 @@ const Photos = () => {
     async function fetchData(){
       try {
         const data = await (
-          await fetch(`http://localhost:3001/photos?_sort=id&_order=${sort}&q=${search}`)
+          await fetch(`https://gallery-app-server.vercel.app/photos?_sort=id&_order=${sort}&q=${search}`)
         ).json(); 
         setPhotos(data);
       } catch (error) {
@@ -44,7 +44,7 @@ const Photos = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch('http://localhost:3001/photos')
+    fetch('https://gallery-app-server.vercel.app/photos')
     .then((res) => res.json())
     .then((json) => {
       setPhotos(json);
